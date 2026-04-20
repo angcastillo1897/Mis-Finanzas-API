@@ -459,6 +459,49 @@ Todas las respuestas de error siguen el mismo contrato:
 
 ---
 
+## Respuestas exitosas
+
+Las respuestas exitosas se devuelven directamente con el objeto serializado definido en `response_model`:
+
+### Respuesta simple (un objeto)
+
+```json
+{
+    "id": "550e8400-e29b-41d4-a716-446655440000",
+    "email": "user@example.com",
+    "full_name": "John Doe",
+    "is_active": true,
+    "created_at": "2026-04-19T10:30:00Z"
+}
+```
+
+### Respuesta paginada (listado)
+
+```json
+{
+    "items": [
+        {
+            "id": "550e8400-e29b-41d4-a716-446655440000",
+            "email": "user@example.com",
+            "full_name": "John Doe",
+            "is_active": true,
+            "created_at": "2026-04-19T10:30:00Z"
+        }
+    ],
+    "total": 42,
+    "page": 1,
+    "size": 20,
+    "pages": 3
+}
+```
+
+- Las respuestas exitosas **nunca** incluyen un wrapper tipo `{ "success": true, "data": {...} }`. El `response_model` de FastAPI actúa como contrato.
+- El status code HTTP implica éxito (`200`, `201`, `204`). No hace falta un campo adicional.
+- Los listados deben incluir siempre los campos de `PagedResponse` (ver sección de Paginación).
+- Nunca incluir campos de auditoría interna, secretos, ni información sensible que no deba ser pública.
+
+---
+
 ## Comandos comunes (uv)
 
 ```bash
