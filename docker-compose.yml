@@ -1,0 +1,29 @@
+
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: misfinanzas_db
+    environment:
+      POSTGRES_USER: ${BD_USERNAME}
+      POSTGRES_PASSWORD: ${BD_PASSWORD}
+      POSTGRES_DB: ${BD_NAME}
+      POSTGRES_INITDB_ARGS: "--encoding=UTF8 --locale=es_ES.UTF-8"
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${BD_USERNAME} -d ${BD_NAME}"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+    networks:
+      - misfinanzas_network
+
+volumes:
+  postgres_data:
+    driver: local
+
+networks:
+  misfinanzas_network:
+    driver: bridge

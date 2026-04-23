@@ -11,8 +11,8 @@ license = { text = "MIT" }
 authors = [{ name = "MisFinanzas Team" }]
 
 dependencies = [
-    "fastapi==0.104.1",
-    "uvicorn[standard]==0.24.0",
+    "fastapi[standard]>=0.116.0",
+    "gunicorn==23.0.0",
     "sqlalchemy==2.0.23",
     "asyncpg==0.29.0",
     "alembic==1.13.0",
@@ -21,40 +21,29 @@ dependencies = [
     "pydantic[email]==2.5.0",
     "python-jose[cryptography]==3.3.0",
     "passlib[bcrypt]==1.7.4",
-    "python-multipart==0.0.6",
     "python-dotenv==1.0.0",
+    "sqlalchemy-utils==0.41.1",
 ]
 
 [project.optional-dependencies]
 dev = [
-    "pytest==7.4.3",
-    "pytest-asyncio==0.21.1",
-    "httpx==0.25.2",
     "ruff==0.1.8",
-    "mypy==1.7.1",
 ]
 
 [tool.ruff]
-line-length = 120
-target-version = "py312"
-exclude = [".git", ".venv", "venv", "alembic"]
+line-length = 88           # same as Black default
+target-version = "py312"   # since you’re on Python 3.12
+fix = true                 # auto-fix lint errors when possible
+
 
 [tool.ruff.lint]
-select = ["E", "F", "W", "I"]
-ignore = ["E501"]
+extend-select = ["N", "R", "I"]
+ignore = ["N818"]
 
-[tool.ruff.lint.isort]
-known-first-party = ["app"]
-
-[tool.mypy]
-python_version = "3.12"
-strict = true
-exclude = ["venv", "alembic"]
-
-[tool.pytest.ini_options]
-asyncio_mode = "auto"
-testpaths = ["tests"]
-python_files = "test_*.py"
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
+skip-magic-trailing-comma = false
 
 [tool.hatch.build.targets.wheel]
-packages = ["app"]
+packages = ["src"]

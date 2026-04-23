@@ -1,17 +1,12 @@
-# Environment
-.env
-.env.local
-.venv
-env/
-venv/
-ENV/
-
 # Python
 __pycache__/
 *.py[cod]
 *$py.class
 *.so
 .Python
+env/
+venv/
+ENV/
 build/
 develop-eggs/
 dist/
@@ -28,6 +23,10 @@ wheels/
 .installed.cfg
 *.egg
 
+# Virtual environments
+.venv/
+.env
+
 # IDE
 .vscode/
 .idea/
@@ -36,21 +35,19 @@ wheels/
 *~
 .DS_Store
 
+# Git
+.git/
+.gitignore
+
 # Testing
 .pytest_cache/
 .coverage
 htmlcov/
 
+# Docker
+docker-compose.yml
+Dockerfile
+.dockerignore
+
 # Alembic
-alembic.db
-
-# Database
-*.db
-*.sqlite
-*.sqlite3
-
-# Logs
-*.log
-logs/
-
-.env
+alembic/versions/
