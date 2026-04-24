@@ -1,7 +1,9 @@
-# from fastapi import FastAPI
+from fastapi import FastAPI
 
-# from .alert_configuration import alert_configurations_router
+from .auth import auth_router
+
+from src.settings import setting
 
 
-# def load_routes(app: FastAPI) -> None:
-#     app.include_router(alert_configurations_router)
+def load_routes(app: FastAPI) -> None:
+    app.include_router(auth_router, prefix=setting.API_PREFIX)

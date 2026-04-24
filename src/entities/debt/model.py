@@ -6,8 +6,8 @@ from sqlalchemy import func, Enum, ForeignKey, Text
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 from typing import TYPE_CHECKING
 if TYPE_CHECKING:
+    from src.entities.user.model import User
     from src.entities.transaction.model import Transaction
-from src.entities.user.model import User
 from src.utils.connection_db import Model
 from src.utils.enums import DebtTypeEnum, DebtStatusEnum
 

@@ -7,11 +7,11 @@ from sqlalchemy.orm import Mapped, mapped_column, relationship
 from typing import TYPE_CHECKING
 if TYPE_CHECKING:
     from src.entities.account.model import Account
+    from src.entities.user.model import User
 
-from src.utils.connection_db import Model
-from src.entities.category.model import Category
 from src.entities.debt.model import Debt
-from src.entities.user.model import User
+from src.entities.category.model import Category
+from src.utils.connection_db import Model
 from src.utils.enums import TransactionTypeEnum
 
 

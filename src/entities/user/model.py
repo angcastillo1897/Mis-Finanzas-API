@@ -5,10 +5,10 @@ from sqlalchemy import func
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 from typing import TYPE_CHECKING
 
+from src.entities.account.model import Account
+from src.entities.transaction.model import Transaction
 if TYPE_CHECKING:
-    from src.entities.account.model import Account
     from src.entities.category.model import Category
-    from src.entities.transaction.model import Transaction
     from src.entities.debt.model import Debt
 from src.utils.connection_db import Model
 

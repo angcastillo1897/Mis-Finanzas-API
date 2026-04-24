@@ -7,7 +7,7 @@ from fastapi.responses import JSONResponse
 from starlette.status import HTTP_422_UNPROCESSABLE_ENTITY
 
 from src.exceptions import exception_handlers
-# from src.routes import load_routes
+from src.routes import load_routes
 from src.settings import setting
 
 app: FastAPI = FastAPI(
@@ -37,7 +37,7 @@ logging.basicConfig(
 )
 
 
-# load_routes(app)
+load_routes(app)
 
 app.add_middleware(
     CORSMiddleware,
