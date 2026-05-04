@@ -40,6 +40,9 @@ class Debt(Model):
         ForeignKey("transactions.id"), nullable=True, index=True
     )
     created_at: Mapped[datetime] = mapped_column(server_default=func.now())
+    updated_at: Mapped[datetime] = mapped_column(
+        server_default=func.now(), onupdate=func.now()
+    )
 
     # Relaciones (usar referencias de string para evitar importes circulares)
     user: Mapped["User"] = relationship("User", back_populates="debts")
