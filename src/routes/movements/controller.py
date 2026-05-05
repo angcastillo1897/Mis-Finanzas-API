@@ -22,7 +22,7 @@ class MovementController:
         user: CurrentUserDepends,
         async_session: AsyncSessionDepends,
         type: str | None = Query(
-            None, description="Filter by movement type: ingreso or gasto"),
+            None, description="Filter by movement type: INCOME or EXPENSE"),
         category_id: int | None = Query(
             None, description="Filter by category ID"),
         account_id: int | None = Query(

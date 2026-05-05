@@ -19,7 +19,7 @@ class CategoryController:
         user: CurrentUserDepends,
         async_session: AsyncSessionDepends,
         type: str | None = Query(
-            None, description="Filter by category type: ingreso or gasto"),
+            None, description="Filter by category type: INCOME or EXPENSE"),
     ) -> CategoryListResponse:
         """Get all global and user-specific categories, optionally filtered by type."""
         categories = await self.service.get_all_categories(

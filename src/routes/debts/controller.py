@@ -19,9 +19,9 @@ class DebtController:
         user: CurrentUserDepends,
         async_session: AsyncSessionDepends,
         type: str | None = Query(
-            None, description="Filter by debt type: yo_debo or el_me_debe"),
+            None, description="Filter by debt type: I_OWE or THEY_OWE_ME"),
         status: str | None = Query(
-            None, description="Filter by debt status: pendiente or pagada"),
+            None, description="Filter by debt status: PENDING or PAID"),
     ) -> DebtListResponse:
         """Get all debts for the current user with optional filters."""
         debts = await self.service.get_all_debts(
